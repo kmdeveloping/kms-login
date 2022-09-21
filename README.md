@@ -16,13 +16,13 @@ yarn add kms-login
 ```text
 Add 3 Env variables
 
-REACT_APP_API_URL=your token api url
+REACT_APP_AUTH_TOKEN_URL=your token api url
 REACT_APP_SESSION_DATA_KEY= the data key for a login session (defaults to 'user')
 REACT_APP_PROTECTED_ENDPOINT= the protected page of your app (defaults to '/admin')
 ```
 
 ```jsx
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import LoginComponent  from 'kms-login'
 // Class
 class Home extends Component {
@@ -33,7 +33,9 @@ class Home extends Component {
 // Hook
 const Home = () => {
   return (
-    <LoginComponent />
+    <Fragment>
+      <LoginComponent />
+    </Fragment>
   )
 }
 ```

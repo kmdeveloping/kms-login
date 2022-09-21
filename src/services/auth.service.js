@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 export default class AuthService {
   constructor(apiUrl, dataKey) {
@@ -7,8 +7,7 @@ export default class AuthService {
   }
 
   login = async (username, password) => {
-
-    let loginFormData = new FormData();
+    const loginFormData = new FormData();
 
     loginFormData.append('UserName', username);
     loginFormData.append('Password', password);
@@ -16,7 +15,7 @@ export default class AuthService {
     const config = {
       method: 'POST',
       url: `${this._apiUrl}`,
-      headers: { 'Content-Type': 'multipart/form-data'},
+      headers: { 'Content-Type': 'multipart/form-data' },
       data: loginFormData
     };
 
