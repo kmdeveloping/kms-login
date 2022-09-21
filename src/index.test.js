@@ -1,7 +1,7 @@
-import { Login } from '.';
+import LoginComponent from '.';
 
 describe('Login', () => {
   it('is truthy', () => {
-    expect(Login).toBeTruthy();
+    expect(LoginComponent).toBeTruthy();
   });
 });

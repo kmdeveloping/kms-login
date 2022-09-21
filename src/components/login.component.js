@@ -12,9 +12,7 @@ export default class LoginComponent extends Component {
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
     this._api = process.env.REACT_APP_AUTH_TOKEN_URL;
-    this._user = process.env.REACT_APP_SESSION_DATA_KEY || 'user';
-    this._route = process.env.REACT_APP_PROTECTED_ENDPOINT || '/admin'; // find better way to do this
-    this._authService = new AuthService(this._api, this._user);
+    this._authService = new AuthService(this._api);
 
     this.state = {
       username: '',
@@ -100,7 +98,6 @@ export default class LoginComponent extends Component {
             />
           </Form>
         </div>
-        {this.state.profile && <pre>{JSON.stringify(this.state.profile)}</pre>}
       </div>
     );
   }

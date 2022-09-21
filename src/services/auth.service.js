@@ -1,9 +1,13 @@
 import axios from 'axios';
 
 export default class AuthService {
-  constructor(apiUrl, dataKey) {
+  _user;
+  _token;
+
+  constructor(apiUrl) {
     this._apiUrl = apiUrl;
-    this._dataKey = dataKey;
+    this._user = 'user';
+    this._token = 'token';
   }
 
   login = async (username, password) => {
@@ -21,20 +25,26 @@ export default class AuthService {
 
     return axios(config).then((res) => {
       if (res.data.token) {
-        localStorage.setItem(this._dataKey, JSON.stringify(res.data));
+        const token = JSON.stringify(res.data.token);
+        const user = JSON.parse(atob(token.split('.')[1]));
+        localStorage.setItem(this._token, token);
+        localStorage.setItem(this._user, user);
       }
       return res.data;
     });
   };
 
   logout = () => {
-    localStorage.removeItem(this._dataKey);
+    localStorage.removeItem(this._user);
+    localStorage.removeItem(this._token);
   };
 
   getUserSession = () => {
-    const auth = JSON.parse(localStorage.getItem(this._dataKey));
+    const userSession = JSON.parse(localStorage.getItem(this._user));
+    userSession.token = JSON.parse(localStorage.getItem(this._token));
+
     try {
-      return JSON.parse(atob(auth.token.split('.')[1]));
+      return userSession;
     } catch (e) {
       return null;
     }

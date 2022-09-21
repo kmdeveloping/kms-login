@@ -1,13 +1,18 @@
 export default class AuthHeader {
-  constructor({ dataKey }) {
-    this._dataKey = dataKey;
+  _token;
+  _user;
+
+  constructor() {
+    this._token = 'token';
+    this._user = 'user';
   }
 
-  authHeader = () => {
-    const user = JSON.parse(localStorage.getItem(this._dataKey));
+  getAuthHeader = () => {
+    const user = JSON.parse(localStorage.getItem(this._user));
+    const token = JSON.parse(localStorage.getItem(this._token));
 
-    if (user && user.token) {
-      return new Headers({ Authorization: `Bearer ${user.token}` });
+    if (user && token) {
+      return new Headers({ Authorization: `Bearer ${token}` });
     } else {
       return {};
     }
