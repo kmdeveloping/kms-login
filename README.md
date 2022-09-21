@@ -13,18 +13,28 @@ yarn add kms-login
 
 ## Usage
 
+```text
+Add 3 Env variables
+
+REACT_APP_API_URL=your token api url
+REACT_APP_SESSION_DATA_KEY= the data key for a login session (defaults to 'user')
+REACT_APP_PROTECTED_ENDPOINT= the protected page of your app (defaults to '/admin')
+```
+
 ```jsx
 import React, { Component } from 'react'
-import { Login } from 'kms-login'
-
-const adminPath = "/admin" // or whatever your path to loging required page is
-const tokenApi = "https://sometoken.com/get/new/token"
-const dataKey = "user" // the key used to manage client local storage of session
-
-class LoginComponent extends Component {
+import LoginComponent  from 'kms-login'
+// Class
+class Home extends Component {
   render() {
-    return <Login admin={adminPath} dataKey={dataKey} api={tokenApi} />
+    return <LoginComponent />
   }
+}
+// Hook
+const Home = () => {
+  return (
+    <LoginComponent />
+  )
 }
 ```
 

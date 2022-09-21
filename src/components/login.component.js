@@ -3,6 +3,7 @@ import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 import AuthService from '../services/auth.service';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default class LoginComponent extends Component {
 
@@ -11,9 +12,9 @@ export default class LoginComponent extends Component {
     this.handleLogin = this.handleLogin.bind(this);
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onChangePassword = this.onChangePassword.bind(this);
-    this._api = props.apiUrl;
-    this._user = props.dataKey;
-    this._route = props.adminPage;
+    this._api = process.env.REACT_APP_API_URL;
+    this._user = process.env.REACT_APP_SESSION_DATA_KEY || 'user';
+    this._route = process.env.REACT_APP_PROTECTED_ENDPOINT || '/admin';
     this._authService = new AuthService(this._api, this._user);
 
     this.state = {
