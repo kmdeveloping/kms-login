@@ -1,6 +1,7 @@
-import React from 'react'
-import styles from './styles.module.css'
+import React from 'react';
+import LoginComponent from './components/login.component';
+import "bootstrap/dist/css/bootstrap.min.css";
 
-export const ExampleComponent = ({ text }) => {
-  return <div className={styles.test}>Example Component: {text}</div>
-}
+export const Login = ({admin, dataKey, api}) => {
+  return <LoginComponent adminPage={admin} dataKey={dataKey} apiUrl={api} />;
+};

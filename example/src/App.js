@@ -1,10 +1,8 @@
 import React from 'react'
-
-import { ExampleComponent } from 'kms-login'
-import 'kms-login/dist/index.css'
+import { Login } from 'kms-login'
 
 const App = () => {
-  return <ExampleComponent text="Create React Library Example 😄" />
+  return <Login admin='/admin' dataKey='user' api='https://localhost:7001/api/v1/authentication/token'/>
 }
 
 export default App
