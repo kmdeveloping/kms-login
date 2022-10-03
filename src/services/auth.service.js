@@ -1,11 +1,13 @@
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
-export default class AuthService {
+class AuthService {
   _user;
   _token;
 
-  constructor(apiUrl) {
-    this._apiUrl = apiUrl;
+  constructor() {
+    this._apiUrl = 'http://localhost:8090/api/v1/auth/token';
     this._user = 'user';
     this._token = 'token';
   }
@@ -50,3 +52,5 @@ export default class AuthService {
     }
   };
 }
+
+export default new AuthService();
